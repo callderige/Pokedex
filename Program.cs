@@ -12,7 +12,8 @@ namespace Pokedex
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world.");
+            Pokemon pokemon = new Pokemon(1, "Bulbasaur", "Grass", 6.9, 0.7);
+            Console.WriteLine(pokemon.GetBmi());
         }
     }
 }
