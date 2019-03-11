@@ -11,12 +11,13 @@ namespace Pokedex
 {
     public class Model 
     {    
-        private List<Pokemon> pokemonList = new List<Pokemon>(); 
+        private List<Pokemon> pokemonList;
         private static string connString = "server=localhost;user=root;database=db;port3306;password=";
         private MySqlConnection conn = new MySqlConnection(connString);
         public void GetAllPokemon()
         {
             Pokemon pokemon = null;
+            pokemonList = new List<Pokemon>(); 
             try
             {
                 Console.WriteLine("Connecting to MySQL...");
@@ -32,6 +33,7 @@ namespace Pokedex
                     pokemonList.Add(pokemon);
                 }
                 rdr.Close();
+                conn.Close();
             }
             catch (Exception ex)
             {

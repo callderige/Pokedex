@@ -16,6 +16,9 @@ namespace Pokedex
             Model m = new Model();
             m.GetAllPokemon();
             Console.Write(m.GetPokemonList());
+            Console.WriteLine("asdasdasd");
+            m.GetAllPokemon();
+            Console.Write(m.GetPokemonList());
         }
     }
 }
