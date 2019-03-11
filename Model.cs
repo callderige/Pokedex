@@ -30,7 +30,7 @@ namespace Pokedex
 
                 while (rdr.Read())
                 {  
-                    pokemon = new Pokemon((byte) rdr[1], (string) rdr[2], (string) rdr[3], (string) rdr[4], (double) rdr[5], (double) rdr[6]);
+                    pokemon = new Pokemon((int) rdr[0], (byte) rdr[1], (string) rdr[2], (string) rdr[3], (string) rdr[4], (double) rdr[5], (double) rdr[6]);
                     pokemonList.Add(pokemon);
                 }
                 rdr.Close();
@@ -43,6 +43,32 @@ namespace Pokedex
 
             return str = GetPokemonList();
         }
+        public Pokemon GetOnePokemon(int id)
+        {
+            Pokemon pokemon = null;
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                string sql = "SELECT * FROM Pokedex WHERE id=" + id;
+                MySqlCommand  cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {  
+                    pokemon = new Pokemon((int) rdr[0], (byte) rdr[1], (string) rdr[2], (string) rdr[3], (string) rdr[4], (double) rdr[5], (double) rdr[6]);
+                }
+                rdr.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return pokemon;
+        }
+
         public void InsertPokemon(Pokemon pokemon)
         {
             try
