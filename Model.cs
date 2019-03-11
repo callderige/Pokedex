@@ -42,6 +42,25 @@ namespace Pokedex
             }
 
             return str = GetPokemonList();
+        }
+        public void InsertPokemon(Pokemon pokemon)
+        {
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                string sql = "INSERT INTO Pokedex (KantoId, Name, TypeOne, TypeTwo, Weight, Height) VALUES (" + pokemon.KantoId + 
+                ",'" + pokemon.Name + "','" + pokemon.TypeOne + "','" + pokemon.TypeTwo + "'," + pokemon.MetricWeight + "," + pokemon.MetricHeight + ")";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            GetAllPokemon();
         }      
         public string GetPokemonList()
         {
