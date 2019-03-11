@@ -18,7 +18,8 @@ namespace Pokedex
             //m.InsertPokemon(p);
             //Console.Write(m.GetAllPokemon());
             Pokemon p = m.GetOnePokemon(12);
-            m.DeleteOnePokemon(p.Id);
+            p.Name = "testing";
+            m.UpdateOnePokemon(p);
         }
     }
 }

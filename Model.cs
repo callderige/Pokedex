@@ -85,6 +85,25 @@ namespace Pokedex
                 Console.WriteLine(ex.ToString());
             }
         }
+        public void UpdateOnePokemon(Pokemon pokemon)
+        {
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                string sql = "UPDATE Pokedex SET kantoId=" + pokemon.KantoId + ", name='" + pokemon.Name +
+                "', typeOne='" + pokemon.TypeOne + "', typeTwo='" + pokemon.TypeTwo + "', weight=" + pokemon.MetricWeight + ", height=" + pokemon.MetricHeight + 
+                " WHERE id=" + pokemon.Id;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public void InsertPokemon(Pokemon pokemon)
         {
             try
