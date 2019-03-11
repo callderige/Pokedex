@@ -68,7 +68,23 @@ namespace Pokedex
             }
             return pokemon;
         }
+        public void DeleteOnePokemon(int id)
+        {
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
 
+                string sql = "DELETE from Pokedex WHERE id=" + id;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
         public void InsertPokemon(Pokemon pokemon)
         {
             try
