@@ -14,9 +14,6 @@ namespace Pokedex
         static void Main(string[] args)
         {
             Model m = new Model();
-            //Pokemon p = new Pokemon(3, "Venusaur", "Grass", "Poison", 100, 2);
-            //m.InsertPokemon(p);
-            //Console.Write(m.GetAllPokemon());
             Pokemon p = m.GetOnePokemon(12);
             p.Name = "testing";
             m.UpdateOnePokemon(p);

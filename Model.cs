@@ -14,6 +14,7 @@ namespace Pokedex
         private List<Pokemon> pokemonList;
         private static string connString = "server=localhost;user=root;database=db;port3306;password=";
         private MySqlConnection conn = new MySqlConnection(connString);
+        
         public string GetAllPokemon()
         {
             Pokemon pokemon = null;
@@ -43,6 +44,7 @@ namespace Pokedex
 
             return str = GetPokemonList();
         }
+
         public Pokemon GetOnePokemon(int id)
         {
             Pokemon pokemon = null;
@@ -68,6 +70,7 @@ namespace Pokedex
             }
             return pokemon;
         }
+
         public void DeleteOnePokemon(int id)
         {
             try
@@ -85,6 +88,7 @@ namespace Pokedex
                 Console.WriteLine(ex.ToString());
             }
         }
+
         public void UpdateOnePokemon(Pokemon pokemon)
         {
             try
@@ -104,6 +108,7 @@ namespace Pokedex
                 Console.WriteLine(ex.ToString());
             }
         }
+
         public void InsertPokemon(Pokemon pokemon)
         {
             try
@@ -122,7 +127,8 @@ namespace Pokedex
                 Console.WriteLine(ex.ToString());
             }
             GetAllPokemon();
-        }      
+        }
+
         public string GetPokemonList()
         {
             var report = new System.Text.StringBuilder();
@@ -134,5 +140,5 @@ namespace Pokedex
 
             return report.ToString();
         }
-    } 
+    }
 }

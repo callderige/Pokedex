@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 namespace Pokedex
 {
     public class Pokemon 
-    {   
+    {
         public int Id { get; set; }
         public byte KantoId { get; set; }
         public string Name { get; set; }
@@ -15,6 +15,7 @@ namespace Pokedex
         public string TypeTwo { get; set; }
         public double MetricWeight { get; set; }
         public double MetricHeight { get; set; }
+
         public Pokemon(byte kantoId, string name, string typeOne, double metricWeight, double metricHeight)
         {
             this.KantoId = kantoId;
@@ -24,6 +25,7 @@ namespace Pokedex
             this.MetricWeight = metricWeight;
             this.MetricHeight = metricHeight;
         }
+
         public Pokemon(byte kantoId, string name, string typeOne, string typeTwo, double metricWeight, double metricHeight)
         {
             this.KantoId = kantoId;
@@ -33,6 +35,7 @@ namespace Pokedex
             this.MetricWeight = metricWeight;
             this.MetricHeight = metricHeight;
         }
+
         public Pokemon(int id, byte kantoId, string name, string typeOne, string typeTwo, double metricWeight, double metricHeight)
         {
             this.Id = id;
@@ -43,6 +46,7 @@ namespace Pokedex
             this.MetricWeight = metricWeight;
             this.MetricHeight = metricHeight;
         }
+
         public double GetBmi()
         {
             return this.MetricWeight / (this.MetricHeight*this.MetricHeight);
